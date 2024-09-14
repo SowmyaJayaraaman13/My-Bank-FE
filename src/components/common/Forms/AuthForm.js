@@ -1,5 +1,6 @@
-import { Button, Card, Input } from "@nextui-org/react";
+import { Input } from "@nextui-org/react";
 import React from "react";
+import Button from "../Buttons/Button";
 
 function AuthForm({ signup = false }) {
   return (
@@ -33,13 +34,7 @@ function AuthForm({ signup = false }) {
           radius="sm"
         />
       )}
-      <Button
-        fullWidth
-        color="primary"
-        size="lg"
-        radius="sm"
-        className="text-white text-xl font-bold"
-      >
+      <Button>
         { signup ? 'Signup' : 'Login' }
       </Button>
     </div>
