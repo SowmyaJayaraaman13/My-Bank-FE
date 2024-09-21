@@ -15,6 +15,16 @@ code {
     monospace;
 }
 
-.group[data-filled-within="true"] .group-data-\[filled-within\=true\]\:text-foreground {
+.auth1 > .group[data-filled-within="true"] .group-data-\[filled-within\=true\]\:text-foreground {
   font-size: 20px !important;
+}
+
+.card_gradiant {
+  background: rgb(2,0,36);
+background: linear-gradient(90deg, #4C49ED 0%, #0A06F4 100%);
+}
+
+.card_footer_gradiant {
+  background: rgb(2,0,36);
+background: linear-gradient(90deg, #ffff 0%, #ffff 100%);
 }

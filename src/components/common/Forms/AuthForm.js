@@ -4,7 +4,7 @@ import Button from "../Buttons/Button";
 
 function AuthForm({ signup = false }) {
   return (
-    <div className="w-full flex flex-col gap-6">
+    <div className="w-full flex flex-col gap-6 auth">
       <Input
         type="email"
         size="lg"

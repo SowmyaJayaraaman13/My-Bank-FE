@@ -32,7 +32,7 @@ export default function App() {
         </NavbarItem>
         <NavbarItem>
           <NavLink
-            to="/messages"
+            to="/cards"
             className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "active" : ""
             }
@@ -42,7 +42,7 @@ export default function App() {
         </NavbarItem>
         <NavbarItem>
           <NavLink
-            to="/messages"
+            to="/settings"
             className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "active" : ""
             }
