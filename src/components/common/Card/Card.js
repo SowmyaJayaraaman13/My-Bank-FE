@@ -10,7 +10,7 @@ import React from "react";
 
 function BasicCard({ type }) {
   return (
-    <Card className={`${type === 'primary' ? 'card_gradiant text-white' : ''}  lg:w-[30%] md:w-[30%] w-full mb-2 h-[180px]`}>
+    <Card className={`${type === 'primary' ? 'card_gradiant text-white' : ''} snap-start flex-shrink-0  lg:w-[30%] md:w-[30%] w-full mb-2 h-[180px]`}>
       <CardHeader className="flex justify-between">
         <div>
           <p className="font-thin text-tiny">Balance</p>
