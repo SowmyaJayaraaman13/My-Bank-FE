@@ -26,15 +26,15 @@ function CardWrapper() {
           Add Card
         </Button>
       </div>
-      <div className="flex justify-between overflow-x-auto snap-x snap-mandatory mb-10">
+      <div className="flex justify-between overflow-x-auto snap-x snap-mandatory mb-5 p-1 bg-transparent">
         <BasicCard type="primary" />
         <BasicCard />
         <BasicCard type="primary" />
         <CardForm isOpen={isOpen} onOpenChange={onOpenChange} />
       </div>
-      <div className="flex justify-between mx-3 h-[50vh] flex-wrap">
+      <div className="flex justify-between mb-3 h-[50vh] flex-wrap">
         <ExpenseStats />
-        <div className="w-full lg:w-[70%] md:w-[70%] h-full my-5">
+        <div className="w-full lg:w-[70%] md:w-[70%] h-full mt-5">
           <p className="text-lg font-bold mb-3">Latest Transaction</p>
           <TransactionList latestTransations={latestTransations} />
         </div>

@@ -3,7 +3,7 @@ import TransactionWrapper from '../../components/Transactions'
 
 function Transactions() {
   return (
-    <div className='p-10 box-border'>
+    <div className='p-5 box-border'>
       <TransactionWrapper />
     </div>
   )
