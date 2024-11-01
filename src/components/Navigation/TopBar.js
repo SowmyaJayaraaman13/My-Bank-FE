@@ -7,56 +7,64 @@ import {
   Link,
   Button,
   Image,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
 } from "@nextui-org/react";
 import { NavLink } from "react-router-dom";
 
 export default function App() {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const menuItems = [
+    {
+      name: "Transactions",
+      link: "/transactions",
+    },
+    {
+      name: "Cards",
+      link: "/cards",
+    },
+    {
+      name: "Settings",
+      link: "/settings",
+    },
+    {
+      name: "Logout",
+      link: "/login",
+    },
+  ];
+
   return (
-    <Navbar>
-      <NavbarBrand>
-        <Image src="logo.png" width={200} />
-      </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <NavLink
-            to="/transactions"
-            className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "text-blue-600" : ""
-            }
-          >
-            Transactions
-          </NavLink>
-          {/* <Link color="primary" href="/transactions" aria-current="page">
-            Transactions
-          </Link> */}
-        </NavbarItem>
-        <NavbarItem>
-          <NavLink
-            to="/cards"
-            className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "active" : ""
-            }
-          >
-            Cards
-          </NavLink>
-        </NavbarItem>
-        <NavbarItem>
-          <NavLink
-            to="/settings"
-            className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "active" : ""
-            }
-          >
-            Settings
-          </NavLink>
-        </NavbarItem>
+    <Navbar className="flex justify-between w-full">
+      <NavbarContent>
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          className="sm:hidden"
+        />
+        <NavbarBrand>
+          <Image src="logo.png" width={180} />
+        </NavbarBrand>
       </NavbarContent>
-      <NavbarContent justify="end">
+      <NavbarMenu>
+        {menuItems.map((item, index) => (
+          <NavbarMenuItem key={`${item}-${index}`}>
+            <Link
+              href={item.link}
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : ""
+              }
+            >
+              {item.name}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
+      <NavbarContent justify="end" className="w-full ml-[25%]">
         <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
+          <Link href="/login">Login</Link>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
+          <Button as={Link} color="primary" href="/signup" variant="flat">
             Sign Up
           </Button>
         </NavbarItem>

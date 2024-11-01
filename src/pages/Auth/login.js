@@ -8,7 +8,7 @@ function Login() {
       className="flex justify-center items-center"
       style={{ height: "100vh", width: "100%" }}
     >
-      <Card className="sm:w-full lg:w-[500px] md:w-1/3 p-10 box-border flex-col items-center">
+      <Card className="sm:w-full lg:w-[450px] md:w-1/3 p-10 box-border flex-col items-center">
         <p className="text-3xl font-semibold mx-3">Welcome to BankDash</p>
         <div className="flex my-5">
           <Card className="p-2 box-border mx-3">

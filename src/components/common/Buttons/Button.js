@@ -8,6 +8,7 @@ function Button({ text = "", props = {}, additionalClass, children }) {
       color="primary"
       size="lg"
       radius="sm"
+      type="submit"
       {...props}
       // className="text-white text-xl font-bold"
     >

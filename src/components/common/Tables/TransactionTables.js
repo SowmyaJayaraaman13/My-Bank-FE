@@ -52,6 +52,7 @@ export default function TransactionTables({transactions, showAll = false}) {
         </div>
       }
       classNames={{
+        base: "max-h-[calc(100vh-4rem-96px-140px)] overflow-y-scroll no-scrollbar",
         wrapper: "min-h-[222px]",
       }}
     >

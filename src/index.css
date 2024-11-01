@@ -2,12 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+/* add the code bellow */ 
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+ /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+}
+}
 
 body {
   margin: 0;
   font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media screen and (min-width: 900px) {
+  body {
+    overflow: hidden;
+  }
 }
 
 code {
@@ -27,4 +45,8 @@ background: linear-gradient(90deg, #4C49ED 0%, #0A06F4 100%);
 .card_footer_gradiant {
   background: rgb(2,0,36);
 background: linear-gradient(90deg, #ffff 0%, #ffff 100%);
+}
+
+nav>header {
+  max-width: none !important;
 }

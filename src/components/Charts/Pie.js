@@ -1,6 +1,6 @@
 import { Card } from "@nextui-org/react";
 import React, { useState } from "react";
-import { PieChart, Pie, Cell, Legend } from "recharts";
+import { PieChart, Pie, Cell, Legend, ResponsiveContainer } from "recharts";
 
 const data = [
   { name: "HDFC Bank", value: 400 },
@@ -18,8 +18,9 @@ const PieChartExample = () => {
   };
 
   return (
-    <Card>
-      <PieChart width={300} height={300}>
+    <Card className="w-full h-full">
+      <ResponsiveContainer width="100%" height="100%">
+      <PieChart>
         <Pie
           data={data}
           cx="50%"
@@ -36,6 +37,7 @@ const PieChartExample = () => {
         </Pie>
         <Legend verticalAlign="bottom" layout="horizontal" />
       </PieChart>
+      </ResponsiveContainer>
     </Card>
   );
 };

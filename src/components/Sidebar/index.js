@@ -1,13 +1,45 @@
-import { Card } from '@nextui-org/react';
-import React from 'react'
-import { TbTransactionDollar } from "react-icons/tb";
+import React from "react";
+import { CiCreditCard1 } from "react-icons/ci";
+import { FiSettings } from "react-icons/fi";
+import { GrTransaction } from "react-icons/gr";
+import { NavLink } from "react-router-dom";
 
 function SideBar() {
+  const navBarItems = [
+    {
+      name: "Transaction",
+      icon: <GrTransaction />,
+      route: "/transactions",
+    },
+    {
+      name: "Cards",
+      icon: <CiCreditCard1 />,
+      route: "/cards",
+    },
+    {
+      name: "Settings",
+      icon: <FiSettings />,
+      route: "/settings",
+    },
+  ];
+
   return (
-    <div className='lg:w-16 md:w-16 hidden lg:flex flex-col md:flex border-e-gray-600 h-[80vh]'>
-        <TbTransactionDollar />
+    <div className="h-[calc(100dvh-4rem)] bg-white p-3 box-border mt-[4rem]">
+      {navBarItems.map((item) => (
+        <NavLink
+          className={({ isActive }) => {
+            const baseStyle = "flex h-10 items-center cursor-pointer rounded p-4";
+            return isActive ? `${baseStyle} bg-blue-600 text-white` : baseStyle
+          }
+          }
+          to={item.route}
+        >
+          {item.icon}
+          <p className="font-bold ml-3">{item.name}</p>
+        </NavLink>
+      ))}
     </div>
-  )
+  );
 }
 
-export default SideBar
+export default SideBar;

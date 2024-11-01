@@ -34,7 +34,7 @@ function CardWrapper() {
       </div>
       <div className="flex justify-between mb-3 h-[50vh] flex-wrap">
         <ExpenseStats />
-        <div className="w-full lg:w-[70%] md:w-[70%] h-full mt-5">
+        <div className="w-full lg:w-[70%] md:w-[70%] h-[50vh] mt-5">
           <p className="text-lg font-bold mb-3">Latest Transaction</p>
           <TransactionList latestTransations={latestTransations} />
         </div>
