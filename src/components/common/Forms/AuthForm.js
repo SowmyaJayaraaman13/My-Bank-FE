@@ -1,11 +1,15 @@
 import { Input } from "@nextui-org/react";
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "../Buttons/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { AuthService } from "../../../services/auth"
+import { useBoundStore } from "../../../store";
+import { useNavigate } from "react-router-dom";
 
 function AuthForm({ signup = false }) {
+  const {addUser, user} = useBoundStore((state) => state)
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -21,7 +25,10 @@ function AuthForm({ signup = false }) {
     }),
     onSubmit: async (values) => {
       const response = signup ? await AuthService.signup(values) : await AuthService.login(values);
-      console.log(response);
+      addUser(response.data.user)
+      console.log("Response =>", response);
+      localStorage.setItem('token', response.data.token);
+      navigate('/')
     },
   });
 

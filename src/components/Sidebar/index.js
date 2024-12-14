@@ -2,10 +2,16 @@ import React from "react";
 import { CiCreditCard1 } from "react-icons/ci";
 import { FiSettings } from "react-icons/fi";
 import { GrTransaction } from "react-icons/gr";
+import { MdCategory, MdDashboard } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 
 function SideBar() {
   const navBarItems = [
+    {
+      name: "Dashboard",
+      icon: <MdDashboard />,
+      route: "/",
+    },
     {
       name: "Transaction",
       icon: <GrTransaction />,
@@ -17,6 +23,11 @@ function SideBar() {
       route: "/cards",
     },
     {
+      name: "Category",
+      icon: <MdCategory />,
+      route: "/category",
+    },
+    {
       name: "Settings",
       icon: <FiSettings />,
       route: "/settings",
@@ -24,7 +35,7 @@ function SideBar() {
   ];
 
   return (
-    <div className="h-[calc(100dvh-4rem)] bg-white p-3 box-border mt-[4rem]">
+    <div className="h-[calc(100dvh-4rem)] bg-white p-3 box-border">
       {navBarItems.map((item) => (
         <NavLink
           className={({ isActive }) => {

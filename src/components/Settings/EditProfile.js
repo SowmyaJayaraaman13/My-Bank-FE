@@ -1,14 +1,16 @@
 import React from 'react'
 import ProfileForm from '../common/Forms/ProfileForm'
-import { Image } from '@nextui-org/react'
+import { Avatar, Image } from '@nextui-org/react'
+import { useBoundStore } from '../../store'
 
 function EditProfile() {
+  const { user } = useBoundStore((state) => state)
   return (
     <div className='block lg:flex md:flex'>
       <div className='mx-5 mb-4'>
-          <Image src='images/profile.jpg' width={150} radius='full' />
+          <Avatar src={user.profile_url} size='lg' />
       </div>
-        <ProfileForm />
+        <ProfileForm profileData={user} />
     </div>
   )
 }

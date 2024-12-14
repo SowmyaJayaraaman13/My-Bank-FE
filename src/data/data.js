@@ -492,3 +492,57 @@ export const transactions = [
   }
 ]
 
+export const financeCategories = [
+  {
+    name: "Investments",
+    icon: "💼",
+    description: "Manage your investments including stocks, bonds, and mutual funds to grow your wealth over time."
+  },
+  {
+    name: "Budgeting",
+    icon: "💰",
+    description: "Track your income and expenses, set monthly budgets, and stay on top of your financial goals."
+  },
+  {
+    name: "Savings",
+    icon: "🏦",
+    description: "Save money for short-term and long-term goals, including emergency funds, travel, and retirement."
+  },
+  {
+    name: "Loans",
+    icon: "📉",
+    description: "View and manage your loans, including personal loans, mortgages, and student loans, and track repayments."
+  },
+  {
+    name: "Expenses",
+    icon: "💸",
+    description: "Track your daily, weekly, and monthly expenses to identify patterns and optimize spending."
+  },
+  {
+    name: "Credit Scores",
+    icon: "📊",
+    description: "Monitor your credit score, view your credit report, and get tips for improving your credit health."
+  },
+  {
+    name: "Retirement Planning",
+    icon: "🏖️",
+    description: "Plan for your future with retirement accounts, projections, and advice on how to save for retirement."
+  },
+  {
+    name: "Tax Management",
+    icon: "🧾",
+    description: "Track your tax deductions, file returns, and get tips on how to optimize your tax situation."
+  },
+  {
+    name: "Insurance",
+    icon: "🛡️",
+    description: "Manage your insurance policies, including health, auto, life, and home insurance, to ensure proper coverage."
+  },
+  {
+    name: "Currency Exchange",
+    icon: "💱",
+    description: "Track live currency exchange rates and convert money between different currencies for travel or investments."
+  }
+];
+
+

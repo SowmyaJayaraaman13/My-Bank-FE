@@ -4,11 +4,11 @@ import SettingsTabs from './SettingsTabs'
 
 function SettingsWrapper() {
   return (
-    <Card className='h-min-[80vh]'>
-      <CardHeader>
+    <div className='h-min-[80vh]'>
+      <div>
         <SettingsTabs />
-      </CardHeader>
-    </Card>
+      </div>
+    </div>
   )
 }
 

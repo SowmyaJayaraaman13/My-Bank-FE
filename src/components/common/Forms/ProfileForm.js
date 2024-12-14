@@ -1,7 +1,7 @@
 import { Button, DatePicker, Input } from "@nextui-org/react";
 import React from "react";
 
-function ProfileForm() {
+function ProfileForm({ profileData }) {
   return (
     <div className="w-full flex gap-6 flex-wrap">
       <div className="w-full lg:w-[45%]">
@@ -13,6 +13,7 @@ function ProfileForm() {
           labelPlacement="outside"
           placeholder="Charlene Reed"
           radius="sm"
+          value={profileData.name}
         />
       </div>
       <div className="w-full lg:w-[45%]">
@@ -35,6 +36,7 @@ function ProfileForm() {
           labelPlacement="outside"
           placeholder="charlenereed@gmail.com"
           radius="sm"
+          value={profileData.email}
         />
       </div>
       <div className="w-full lg:w-[45%]">

@@ -10,10 +10,13 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
+  Avatar
 } from "@nextui-org/react";
 import { NavLink } from "react-router-dom";
+import { useBoundStore } from "../../store";
 
 export default function App() {
+  const { user } = useBoundStore((state) => state);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const menuItems = [
     {
@@ -23,6 +26,10 @@ export default function App() {
     {
       name: "Cards",
       link: "/cards",
+    },
+    {
+      name: "Category",
+      link: "/category",
     },
     {
       name: "Settings",
@@ -60,14 +67,15 @@ export default function App() {
         ))}
       </NavbarMenu>
       <NavbarContent justify="end" className="w-full ml-[25%]">
-        <NavbarItem className="hidden lg:flex">
+        {/* <NavbarItem className="hidden lg:flex">
           <Link href="/login">Login</Link>
         </NavbarItem>
         <NavbarItem>
           <Button as={Link} color="primary" href="/signup" variant="flat">
             Sign Up
           </Button>
-        </NavbarItem>
+        </NavbarItem> */}
+        <Avatar isBordered size="sm" color="default" src={user.profile_url} name={user.name} />
       </NavbarContent>
     </Navbar>
   );

@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SideBar from '../components/Sidebar'
+import { Card } from '@nextui-org/react'
 
 function DashboardLayout({children}) {
+  useEffect(() => {
+    console.log('TOKEN =>', localStorage.getItem('token'))
+  }, []);
   return (
     <div className='flex'>
       <div className='w-[20%] hidden lg:block md:block'>
         <SideBar />
       </div>
-      <div className='p-5 box-border w-full h-[calc(100vh-4rem)] mt-[4rem] overflow-y-scroll'>
+      <Card className='p-5 m-2 box-border w-full h-[calc(100vh-5rem)] overflow-y-auto'>
         {children}
-      </div>
+      </Card>
     </div>
   )
 }

@@ -15,6 +15,31 @@
 }
 }
 
+/* Style the entire scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Width of the vertical scrollbar */
+  height: 8px; /* Height of the horizontal scrollbar */
+}
+
+/* Style the track (the empty part of the scrollbar) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light grey background */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+/* Style the handle (the part the user drags) */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Darker grey color */
+  border-radius: 10px; /* Rounded corners for the thumb */
+  border: 2px solid #f1f1f1; /* Slight border around the thumb */
+}
+
+/* Optional: Style the thumb on hover (when the user hovers over the scrollbar) */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker color on hover */
+}
+
+
 body {
   margin: 0;
   font-family: "Lato", sans-serif;
