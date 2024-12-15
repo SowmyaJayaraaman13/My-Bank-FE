@@ -1,10 +1,17 @@
 import React, { useEffect } from 'react'
 import SideBar from '../components/Sidebar'
 import { Card } from '@nextui-org/react'
+import { UserService } from '../services/user'
+import { useBoundStore } from '../store'
 
 function DashboardLayout({children}) {
+  const {addUser, user} = useBoundStore((state) => state)
+  const getUserData = async () => {
+    const response = await UserService.getUser();
+    addUser(response.data.user);
+  }
   useEffect(() => {
-    console.log('TOKEN =>', localStorage.getItem('token'))
+    getUserData()
   }, []);
   return (
     <div className='flex'>

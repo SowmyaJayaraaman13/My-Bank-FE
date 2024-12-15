@@ -11,28 +11,31 @@ import {
 } from "@nextui-org/react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { CardService } from "../../../services/card";
 
 export default function CardForm({ isOpen, onOpenChange }) {
   const cardTypes = ["Visa", "Master Card", "RuPay", "Sodexo"];
   const formik = useFormik({
     initialValues: {
-      cardName: "",
-      cardNumber: "",
-      cardType: "",
-      expiryDate: "",
-      openingBalance: "",
+      name: "",
+      number: "",
+      type: "",
+      expDate: "",
+      balance: "",
     },
     validationSchema: Yup.object().shape({
-      cardName: Yup.string().required("Please enter a valid card name"),
-      cardNumber: Yup.string().required("Please enter a valid card number"),
-      cardType: Yup.string().required("Please enter a valid card type"),
-      expiryDate: Yup.string().required("Please enter a valid date of expiry"),
-      openingBalance: Yup.string().required(
+      name: Yup.string().required("Please enter a valid card name"),
+      number: Yup.string().required("Please enter a valid card number"),
+      type: Yup.string().required("Please enter a valid card type"),
+      expDate: Yup.string().required("Please enter a valid date of expiry"),
+      balance: Yup.string().required(
         "Please enter a valid opening balance"
       ),
     }),
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: async (values, { resetForm }) => {
       console.log("Values =>", values);
+      const response = await CardService.createCard(values)
+      console.log('Response =>', response);
       resetForm();
     },
   });
@@ -52,16 +55,16 @@ export default function CardForm({ isOpen, onOpenChange }) {
                     size="lg"
                     variant="bordered"
                     label="Name On card"
-                    name="cardName"
+                    name="name"
                     labelPlacement="outside"
                     placeholder="Enter Your Name On Card"
                     radius="sm"
                     onChange={formik.handleChange}
-                    value={formik.values.cardName}
+                    value={formik.values.name}
                     onBlur={formik.handleBlur}
                   />
-                  {formik.touched.cardName && formik.errors.cardName ? (
-                    <p className="text-[#f31260]">{formik.errors.cardName}</p>
+                  {formik.touched.name && formik.errors.name ? (
+                    <p className="text-[#f31260]">{formik.errors.name}</p>
                   ) : null}
                 </div>
                 <div>
@@ -70,36 +73,36 @@ export default function CardForm({ isOpen, onOpenChange }) {
                     size="lg"
                     variant="bordered"
                     label="Card Number"
-                    name="cardNumber"
+                    name="number"
                     labelPlacement="outside"
                     placeholder="Enter Your Card Number"
                     radius="sm"
                     onChange={formik.handleChange}
-                    value={formik.values.cardNumber}
+                    value={formik.values.number}
                     onBlur={formik.handleBlur}
                   />
-                  {formik.touched.cardNumber && formik.errors.cardNumber ? (
-                    <p className="text-[#f31260]">{formik.errors.cardNumber}</p>
+                  {formik.touched.number && formik.errors.number ? (
+                    <p className="text-[#f31260]">{formik.errors.number}</p>
                   ) : null}
                 </div>
                 <div>
                   <Select
                     variant="bordered"
                     label="Card Type"
-                    name="cardType"
+                    name="type"
                     labelPlacement="outside"
                     placeholder="Enter Your Name On Card"
                     radius="sm"
                     onChange={formik.handleChange}
-                    value={formik.values.cardType}
+                    value={formik.values.type}
                     onBlur={formik.handleBlur}
                   >
                     {cardTypes.map((type) => (
                       <SelectItem key={type}>{type}</SelectItem>
                     ))}
                   </Select>
-                  {formik.touched.cardType && formik.errors.cardType ? (
-                    <p className="text-[#f31260]">{formik.errors.cardType}</p>
+                  {formik.touched.type && formik.errors.type ? (
+                    <p className="text-[#f31260]">{formik.errors.type}</p>
                   ) : null}
                 </div>
                 <div>
@@ -108,16 +111,16 @@ export default function CardForm({ isOpen, onOpenChange }) {
                     size="lg"
                     variant="bordered"
                     label="Expiration Date"
-                    name="expiryDate"
+                    name="expDate"
                     labelPlacement="outside"
                     placeholder="Enter Your Expiration Date"
                     radius="sm"
                     onChange={formik.handleChange}
-                    value={formik.values.expiryDate}
+                    value={formik.values.expDate}
                     onBlur={formik.handleBlur}
                   />
-                  {formik.touched.expiryDate && formik.errors.expiryDate ? (
-                    <p className="text-[#f31260]">{formik.errors.expiryDate}</p>
+                  {formik.touched.expDate && formik.errors.expDate ? (
+                    <p className="text-[#f31260]">{formik.errors.expDate}</p>
                   ) : null}
                 </div>
                 <div>
@@ -126,18 +129,18 @@ export default function CardForm({ isOpen, onOpenChange }) {
                     size="lg"
                     variant="bordered"
                     label="Opening Balance"
-                    name="openingBalance"
+                    name="balance"
                     labelPlacement="outside"
                     placeholder="Enter Your Opening Balance"
                     radius="sm"
                     onChange={formik.handleChange}
-                    value={formik.values.openingBalance}
+                    value={formik.values.balance}
                     onBlur={formik.handleBlur}
                   />
-                  {formik.touched.openingBalance &&
-                  formik.errors.openingBalance ? (
+                  {formik.touched.balance &&
+                  formik.errors.balance ? (
                     <p className="text-[#f31260]">
-                      {formik.errors.openingBalance}
+                      {formik.errors.balance}
                     </p>
                   ) : null}
                 </div>

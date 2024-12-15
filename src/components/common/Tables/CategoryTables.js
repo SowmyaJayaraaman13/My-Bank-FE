@@ -8,7 +8,10 @@ import {
   TableCell,
   Pagination,
   getKeyValue,
+ Card,
+ CardHeader
 } from "@nextui-org/react";
+import { Icon } from "@iconify/react";
 
 export default function CategoryTable({categories, showAll = false}) {
   const [page, setPage] = React.useState(1);
@@ -43,6 +46,7 @@ export default function CategoryTable({categories, showAll = false}) {
       <TableHeader>
         <TableColumn key="icon">Icon</TableColumn>
         <TableColumn key="name">Name</TableColumn>
+        <TableColumn key="label">Label</TableColumn>
         <TableColumn key="description">Description</TableColumn>
         <TableColumn key="amount">Action</TableColumn>
       </TableHeader>
@@ -51,7 +55,17 @@ export default function CategoryTable({categories, showAll = false}) {
           <TableRow key={item.name}>
             {(columnKey) => (
               <TableCell>
-                <p>{getKeyValue(item, columnKey)}</p>                </TableCell>
+                {
+                  columnKey === 'icon' ? 
+                  <Card
+                        key={item.icon}
+                        className="p-2 box-border w-max"
+                      >
+                       <Icon icon={item.icon} width="16" height="16p" />
+                      </Card> :
+                  <p>{getKeyValue(item, columnKey)}</p> 
+                }          
+              </TableCell>
             )}
           </TableRow>
         )}

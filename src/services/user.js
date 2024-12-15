@@ -2,7 +2,7 @@ import axios from "./axios"
 
 
 const getUser = async () => {
-    const response = await axios.post('/api/user');
+    const response = await axios.get('/api/user');
     return response;
 }
 

@@ -6,31 +6,32 @@ import {
   ModalFooter,
   Button,
   Input,
-  Autocomplete,
-  AutocompleteItem,
   Card,
   CardHeader,
 } from "@nextui-org/react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import IconSearch from "../IconSearch";
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
+import { CategoryService } from "../../../services/categories";
 
 export default function CategoryForm({ isOpen, onOpenChange }) {
   const formik = useFormik({
     initialValues: {
       name: "",
+      label: "",
       icon: "",
       description: "",
     },
     validationSchema: Yup.object().shape({
-      name: Yup.string().required("Please enter a valid card name"),
+      name: Yup.string().required("Please enter a valid Name"),
+      label: Yup.string().required("Please enter a valid Label name"),
       icon: Yup.string().optional(),
       description: Yup.string().optional(),
     }),
-    onSubmit: (values, { resetForm }) => {
-      console.log("Values =>", values);
+    onSubmit: async (values, { resetForm }) => {
+      const response = await CategoryService.createCategory(values);
+      console.log(response);
       resetForm();
     },
   });
@@ -103,7 +104,7 @@ export default function CategoryForm({ isOpen, onOpenChange }) {
                           console.log(icon)
                           formik.setFieldValue(
                             "icon",
-                            `https://iconify.design/icon/${icon}`
+                            icon
                           );
                           setIcons([]);
                         }}
@@ -132,6 +133,24 @@ export default function CategoryForm({ isOpen, onOpenChange }) {
                   />
                   {formik.touched.name && formik.errors.name ? (
                     <p className="text-[#f31260]">{formik.errors.name}</p>
+                  ) : null}
+                </div>
+                <div>
+                  <Input
+                    type="text"
+                    size="lg"
+                    variant="bordered"
+                    label="Category Label"
+                    name="label"
+                    labelPlacement="outside"
+                    placeholder="Enter Label"
+                    radius="sm"
+                    onChange={formik.handleChange}
+                    value={formik.values.label}
+                    onBlur={formik.handleBlur}
+                  />
+                  {formik.touched.label && formik.errors.label ? (
+                    <p className="text-[#f31260]">{formik.errors.label}</p>
                   ) : null}
                 </div>
                 <div>
